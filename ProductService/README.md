@@ -16,3 +16,4 @@
    - If the category with the given category is not found.
    - If no products are found for the given search criteria.
 7. Added Exception Handler to handle the exceptions globally.
+8. Implemented Redis caching to cache the products for faster in-memory retrieval.

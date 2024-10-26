@@ -13,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +21,9 @@ import java.util.Optional;
 
 @Service
 public class ProductService {
+
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
 
     @Autowired
     private ProductRepository productRepository;
@@ -45,12 +49,20 @@ public class ProductService {
 
 
     public Product getProductById(Long id) throws ProductNotFoundException {
-        // Get the product with the given ID from the database, if the product is not found, throw ProductNotFoundException
+        // Return product if stored with the given id in Redis. It is stored in ProductId map with key as "Product_"+id
+        Product product = (Product) redisTemplate.opsForHash().get("ProductId", "Product_"+id);
+        if(product != null) {
+            return product;
+        }
+        // Else fetch the product with the given id from the database, if the product is not found, throw ProductNotFoundException
         Optional<Product> optionalProduct = productRepository.findById(id);
         if (optionalProduct.isEmpty()) {
             throw new ProductNotFoundException("Product with Id " + id + " does not exists");
         }
-        return optionalProduct.get();
+        product = optionalProduct.get();
+        // Store the product as a value in ProductId map of Redis with key as "Product_"+id
+        redisTemplate.opsForHash().put("ProductId", "Product_"+id, product);
+        return product;
     }
 
 
@@ -73,14 +85,21 @@ public class ProductService {
         if (optionalCategory.isEmpty()) {
             throw new CategoryNotFoundException("Category with name " + category + " does not exists");
         }
-        // Create a Pageable object with the given page number, page size and sorting in ascending order by the given field
+        // Return product list if stored with the given category in Redis. It is stored in ProductCategory map with key as "Category_"+category
+        Page<Product> products = (Page<Product>) redisTemplate.opsForHash().get("ProductCategory", "Category_"+category);
+        if(products != null) {
+            return products;
+        }
+        // Else create a Pageable object with the given page number, page size and sorting in ascending order by the given field
         Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(sortBy).ascending());
         // Get all products whose category matches the given category using ElasticSearch
-        Page<Product> products = productElasticSearchRepository.findAllByCategory(optionalCategory.get(), pageable);
+        products = productElasticSearchRepository.findAllByCategory(optionalCategory.get(), pageable);
         // If no products are found, throw NoProductsException
         if (products.isEmpty()) {
-            throw new NoProductsException("No Products Found in Category " + category);
+            throw new NoProductsException("No Products Found with Category " + category);
         }
+        // Store the list of product as a value in ProductCategory map of Redis with key as "Category_"+category
+        redisTemplate.opsForHash().put("ProductCategory", "Category_"+category, products);
         return products;
     }
 
