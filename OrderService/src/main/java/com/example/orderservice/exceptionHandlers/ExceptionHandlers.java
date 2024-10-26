@@ -1,8 +1,7 @@
-package com.example.cartservice.ExceptionHandlers;
+package com.example.orderservice.exceptionHandlers;
 
-import com.example.cartservice.dto.ExceptionDto;
-import com.example.cartservice.exceptions.ProductNotFoundException;
-import com.example.cartservice.exceptions.UserNotFoundException;
+import com.example.orderservice.dtos.ExceptionDto;
+import com.example.orderservice.exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -14,9 +13,18 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ExceptionHandlers {
 
-    // This method handles ProductNotFoundException and sends a response with the exception message and status code 404
-    @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<ExceptionDto> handleProductNotFoundException(ProductNotFoundException ex) {
+    // This method handles CartItemNotFoundException and sends a response with the exception message and status code 404
+    @ExceptionHandler(CartItemNotFoundException.class)
+    public ResponseEntity<ExceptionDto> handleCartItemNotFoundException(CartItemNotFoundException ex) {
+        ExceptionDto exceptionDto = new ExceptionDto();
+        exceptionDto.setMessage(ex.getMessage());
+        return new ResponseEntity<>(exceptionDto, HttpStatus.NOT_FOUND);
+    }
+
+
+    // This method handles OrderNotFoundException and sends a response with the exception message and status code 404
+    @ExceptionHandler(OrderNotFoundException.class)
+    public ResponseEntity<ExceptionDto> handleOrderNotFoundException(OrderNotFoundException ex) {
         ExceptionDto exceptionDto = new ExceptionDto();
         exceptionDto.setMessage(ex.getMessage());
         return new ResponseEntity<>(exceptionDto, HttpStatus.NOT_FOUND);
