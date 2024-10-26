@@ -16,4 +16,3 @@
    - If the Token provided is invalid.
 5. Added Exception Handler to handle the exceptions globally. 
 6. Used Spring Data JPA to connect to MySQL DB and perform the operations.
-
