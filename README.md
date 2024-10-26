@@ -1,7 +1,7 @@
 # EcommerceWebsite
 
-### `User Service`: Handles user registration, login, token validation, profile updation and logout.
-### `Product Service`: Manages product listings, details and categorization.
+### `User Service`: Handles user registration, login, token validation, profile updates and logout.
+### `Product Service`: Manages product listings, details and categorization. 
 ### `Cart Service`: Manages user's shopping cart.
 ### `Order Service`: Handles order processing, history and tracking.
 ### `Notification Service`: Manages payment gateways and transaction logs.
