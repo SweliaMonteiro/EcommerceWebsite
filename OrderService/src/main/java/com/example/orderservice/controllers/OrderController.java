@@ -48,4 +48,12 @@ public class OrderController {
         return new ResponseEntity<>(OrderResponseDto.from(order), HttpStatus.OK);
     }
 
+
+    // This method is used to update the order status or the payment status for a given order id
+    @PutMapping("/update")
+    public ResponseEntity<OrderResponseDto> updateOrder(@RequestBody UpdateOrderRequestDto updateOrderRequestDto) throws OrderNotFoundException, InvalidOrderStatusException, InvalidPaymentStatusException {
+        Order order = orderService.updateOrder(updateOrderRequestDto.getOrderId(), updateOrderRequestDto.getOrderStatus(), updateOrderRequestDto.getPaymentStatus());
+        return new ResponseEntity<>(OrderResponseDto.from(order), HttpStatus.OK);
+    }
+
 }

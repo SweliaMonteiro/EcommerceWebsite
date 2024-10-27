@@ -81,4 +81,35 @@ public class OrderService {
         return orderOptional.get();
     }
 
+
+    public Order updateOrder(Long orderId, String orderStatus, String paymentStatus) throws OrderNotFoundException, InvalidOrderStatusException, InvalidPaymentStatusException{
+        // Check if the order exists in the database, if not throw OrderNotFoundException
+        Optional<Order> orderOptional = orderRepository.findById(orderId);
+        if (orderOptional.isEmpty()) {
+            throw new OrderNotFoundException("Order with Id " + orderId + " does not exits");
+        }
+        Order order = orderOptional.get();
+
+        // Check if order status is valid, if not throw InvalidOrderStatusException
+        if (orderStatus != null && !orderStatus.isEmpty()) {
+            try {
+                order.setOrderStatus(OrderStatus.valueOf(orderStatus));
+            }
+            catch (IllegalArgumentException e) {
+                throw new InvalidOrderStatusException("Invalid Order Status: " + orderStatus);
+            }
+        }
+        // Check if payment status is valid, if not throw InvalidPaymentStatusException
+        if (paymentStatus != null && !paymentStatus.isEmpty()) {
+            try {
+                order.setPaymentStatus(PaymentStatus.valueOf(paymentStatus));
+            }
+            catch (IllegalArgumentException e) {
+                throw new InvalidPaymentStatusException("Invalid Payment Status: " + paymentStatus);
+            }
+        }
+        // Save the updated order to the database
+        return orderRepository.save(order);
+    }
+
 }

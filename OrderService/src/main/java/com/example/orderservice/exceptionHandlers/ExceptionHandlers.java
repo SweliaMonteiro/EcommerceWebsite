@@ -40,6 +40,24 @@ public class ExceptionHandlers {
     }
 
 
+    // This method handles InvalidOrderStatusException and sends a response with the exception message and status code 400
+    @ExceptionHandler(InvalidOrderStatusException.class)
+    public ResponseEntity<ExceptionDto> handleInvalidOrderStatusException(InvalidOrderStatusException ex) {
+        ExceptionDto exceptionDto = new ExceptionDto();
+        exceptionDto.setMessage(ex.getMessage());
+        return new ResponseEntity<>(exceptionDto, HttpStatus.BAD_REQUEST);
+    }
+
+
+    // This method handles InvalidPaymentStatusException and sends a response with the exception message and status code 400
+    @ExceptionHandler(InvalidPaymentStatusException.class)
+    public ResponseEntity<ExceptionDto> handleInvalidPaymentStatusException(InvalidPaymentStatusException ex) {
+        ExceptionDto exceptionDto = new ExceptionDto();
+        exceptionDto.setMessage(ex.getMessage());
+        return new ResponseEntity<>(exceptionDto, HttpStatus.BAD_REQUEST);
+    }
+
+
     // This method handles all other exceptions and sends a response with the exception message and status code 500
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ExceptionDto> handleAllExceptions(Exception ex) {
