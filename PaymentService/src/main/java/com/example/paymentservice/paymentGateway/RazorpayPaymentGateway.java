@@ -10,12 +10,9 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 
-// @Component annotation is used to create a bean of the class so that we can autowire it in other classes
-
 @Component("razorpayPaymentGateway")
 public class RazorpayPaymentGateway implements PaymentGateway {
 
-    // Bean is created to restrict creating multiple instances of the RazorpayClient class
     @Autowired
     private RazorpayClient razorpayClient;
 

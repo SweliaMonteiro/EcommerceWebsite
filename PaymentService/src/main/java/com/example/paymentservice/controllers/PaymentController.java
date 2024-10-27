@@ -1,7 +1,7 @@
 package com.example.paymentservice.controllers;
 
-import com.example.dtos.InitiatePaymentRequestDto;
-import com.example.services.PaymentService;
+import com.example.paymentservice.dtos.OrderResponseDto;
+import com.example.paymentservice.services.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,11 +14,10 @@ public class PaymentController {
     private PaymentService paymentService;
 
 
-    // Since we are not connecting with Order Service, we will create InitiatePaymentRequestDto to get orderId and amount from the user
-    @PostMapping("/")
-    public String initiatePayment(@RequestBody InitiatePaymentRequestDto requestDto) {
+    @PostMapping()
+    public String initiatePayment(@RequestBody OrderResponseDto orderResponseDto) {
         try {
-            return paymentService.initiatePayment(requestDto.getOrderId(), requestDto.getAmount());
+            return paymentService.initiatePayment(orderResponseDto.getOrderId(), orderResponseDto.getTotalAmount(), orderResponseDto.getPaymentMode());
         }
         catch (Exception e) {
             return e.getMessage();
