@@ -1,7 +1,7 @@
-package com.example.repositories;
+package com.example.productservice.repositories;
 
-import com.example.models.Category;
-import com.example.models.Product;
+import com.example.productservice.models.Category;
+import com.example.productservice.models.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;

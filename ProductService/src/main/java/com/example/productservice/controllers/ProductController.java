@@ -1,11 +1,11 @@
-package com.example.controllers;
+package com.example.productservice.controllers;
 
-import com.example.exceptions.CategoryNotFoundException;
-import com.example.exceptions.NoProductsException;
-import com.example.exceptions.ProductNotFoundException;
-import com.example.models.Category;
-import com.example.models.Product;
-import com.example.services.ProductService;
+import com.example.productservice.exceptions.CategoryNotFoundException;
+import com.example.productservice.exceptions.NoProductsException;
+import com.example.productservice.exceptions.ProductNotFoundException;
+import com.example.productservice.models.Category;
+import com.example.productservice.models.Product;
+import com.example.productservice.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;

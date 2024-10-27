@@ -1,9 +1,9 @@
-package com.example.exceptionHandlers;
+package com.example.productservice.exceptionHandlers;
 
-import com.example.dtos.ExceptionDto;
-import com.example.exceptions.CategoryNotFoundException;
-import com.example.exceptions.NoProductsException;
-import com.example.exceptions.ProductNotFoundException;
+import com.example.productservice.dtos.ExceptionDto;
+import com.example.productservice.exceptions.CategoryNotFoundException;
+import com.example.productservice.exceptions.NoProductsException;
+import com.example.productservice.exceptions.ProductNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
