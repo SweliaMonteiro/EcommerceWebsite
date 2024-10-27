@@ -17,3 +17,4 @@
 5. Added Exception Handler to handle the exceptions globally. 
 6. Used Spring Data JPA to connect to MySQL DB and perform the operations.
 7. Added Security Configuration to permit access to only `/user/*` endpoints.
+8. Used Kafka to send the User details to the Notification Service whenever a User registers, logs in and updates their profile to notify the User.
