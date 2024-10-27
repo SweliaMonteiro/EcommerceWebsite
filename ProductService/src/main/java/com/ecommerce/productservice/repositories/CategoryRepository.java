@@ -1,6 +1,6 @@
-package com.example.productservice.repositories;
+package com.ecommerce.productservice.repositories;
 
-import com.example.productservice.models.Category;
+import com.ecommerce.productservice.models.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;

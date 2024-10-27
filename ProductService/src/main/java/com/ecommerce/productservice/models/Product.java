@@ -1,4 +1,4 @@
-package com.example.productservice.models;
+package com.ecommerce.productservice.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;

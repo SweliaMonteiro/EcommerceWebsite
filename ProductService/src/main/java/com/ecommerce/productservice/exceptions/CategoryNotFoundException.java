@@ -1,4 +1,4 @@
-package com.example.productservice.exceptions;
+package com.ecommerce.productservice.exceptions;
 
 public class CategoryNotFoundException extends Exception {
     public CategoryNotFoundException(String message) {

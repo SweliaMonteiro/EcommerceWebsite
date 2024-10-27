@@ -1,13 +1,13 @@
-package com.example.productservice.services;
+package com.ecommerce.productservice.services;
 
-import com.example.productservice.exceptions.CategoryNotFoundException;
-import com.example.productservice.exceptions.NoProductsException;
-import com.example.productservice.exceptions.ProductNotFoundException;
-import com.example.productservice.models.Category;
-import com.example.productservice.models.Product;
-import com.example.productservice.repositories.CategoryRepository;
-import com.example.productservice.repositories.ProductRepository;
-import com.example.productservice.repositories.ProductElasticSearchRepository;
+import com.ecommerce.productservice.exceptions.CategoryNotFoundException;
+import com.ecommerce.productservice.exceptions.NoProductsException;
+import com.ecommerce.productservice.exceptions.ProductNotFoundException;
+import com.ecommerce.productservice.models.Category;
+import com.ecommerce.productservice.models.Product;
+import com.ecommerce.productservice.repositories.CategoryRepository;
+import com.ecommerce.productservice.repositories.ProductRepository;
+import com.ecommerce.productservice.repositories.ProductElasticSearchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
