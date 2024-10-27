@@ -77,8 +77,8 @@ public class UserController {
     @PutMapping("/updateProfile/{id}")
     public ResponseEntity<UserDto> updateProfile(@PathVariable long id, @RequestBody UpdateProfileRequestDto updateProfileRequestDto) throws UserNotFoundException, JsonProcessingException {
         User user = userService.updateProfile(id, updateProfileRequestDto.getName(), updateProfileRequestDto.getEmail(), updateProfileRequestDto.getPassword());
-        // Send the UserDto object as a JSON string to the Kafka topic "NotifyUserUpdateProfile"
-        kafkaTemplate.send("NotifyUserUpdateProfile", objectMapper.writeValueAsString(UserDto.from(user)));
+        // Send the UserDto object as a JSON string to the Kafka topic "NotifyUserProfileUpdate"
+        kafkaTemplate.send("NotifyUserProfileUpdate", objectMapper.writeValueAsString(UserDto.from(user)));
         return new ResponseEntity<>(UserDto.from(user), HttpStatus.OK);
     }
 
