@@ -32,7 +32,7 @@ public class OrderResponseDto {
         orderResponseDto.setTotalAmount(order.getTotalAmount());
         orderResponseDto.setDeliveryAddress(order.getDeliveryAddress());
         orderResponseDto.setOrderStatus(order.getOrderStatus().name());
-        orderResponseDto.setPaymentMode(order.getPaymentMode());
+        orderResponseDto.setPaymentMode(order.getPaymentMode().name());
         orderResponseDto.setPaymentStatus(order.getPaymentStatus().name());
         for (CartItem cartItem : order.getCartItems()) {
             orderResponseDto.getCartItemDtos().add(CartItemDto.from(cartItem));
