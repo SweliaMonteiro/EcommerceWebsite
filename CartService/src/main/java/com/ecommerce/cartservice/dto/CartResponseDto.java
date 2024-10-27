@@ -1,6 +1,6 @@
-package com.example.cartservice.dto;
+package com.ecommerce.cartservice.dto;
 
-import com.example.cartservice.models.Cart;
+import com.ecommerce.cartservice.models.Cart;
 import lombok.Getter;
 import lombok.Setter;
 

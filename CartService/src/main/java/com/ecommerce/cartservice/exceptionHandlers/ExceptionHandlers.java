@@ -1,8 +1,8 @@
-package com.example.cartservice.exceptionHandlers;
+package com.ecommerce.cartservice.exceptionHandlers;
 
-import com.example.cartservice.dto.ExceptionDto;
-import com.example.cartservice.exceptions.ProductNotFoundException;
-import com.example.cartservice.exceptions.UserNotFoundException;
+import com.ecommerce.cartservice.dto.ExceptionDto;
+import com.ecommerce.cartservice.exceptions.ProductNotFoundException;
+import com.ecommerce.cartservice.exceptions.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

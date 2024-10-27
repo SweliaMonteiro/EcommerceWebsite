@@ -1,8 +1,8 @@
-package com.example.cartservice.repositories;
+package com.ecommerce.cartservice.repositories;
 
-import com.example.cartservice.models.Cart;
-import com.example.cartservice.models.Product;
-import com.example.cartservice.models.User;
+import com.ecommerce.cartservice.models.Cart;
+import com.ecommerce.cartservice.models.Product;
+import com.ecommerce.cartservice.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;

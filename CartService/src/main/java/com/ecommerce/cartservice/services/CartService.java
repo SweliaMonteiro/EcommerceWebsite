@@ -1,13 +1,13 @@
-package com.example.cartservice.services;
+package com.ecommerce.cartservice.services;
 
-import com.example.cartservice.exceptions.ProductNotFoundException;
-import com.example.cartservice.exceptions.UserNotFoundException;
-import com.example.cartservice.models.Cart;
-import com.example.cartservice.models.Product;
-import com.example.cartservice.models.User;
-import com.example.cartservice.repositories.CartRepository;
-import com.example.cartservice.repositories.ProductRepository;
-import com.example.cartservice.repositories.UserRepository;
+import com.ecommerce.cartservice.exceptions.ProductNotFoundException;
+import com.ecommerce.cartservice.exceptions.UserNotFoundException;
+import com.ecommerce.cartservice.models.User;
+import com.ecommerce.cartservice.repositories.CartRepository;
+import com.ecommerce.cartservice.repositories.ProductRepository;
+import com.ecommerce.cartservice.repositories.UserRepository;
+import com.ecommerce.cartservice.models.Cart;
+import com.ecommerce.cartservice.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

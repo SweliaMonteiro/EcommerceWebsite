@@ -1,12 +1,12 @@
-package com.example.cartservice.controllers;
+package com.ecommerce.cartservice.controllers;
 
-import com.example.cartservice.dto.AddToCartRequestDto;
-import com.example.cartservice.dto.CartResponseDto;
-import com.example.cartservice.dto.ViewCartRequestDto;
-import com.example.cartservice.exceptions.ProductNotFoundException;
-import com.example.cartservice.exceptions.UserNotFoundException;
-import com.example.cartservice.models.Cart;
-import com.example.cartservice.services.CartService;
+import com.ecommerce.cartservice.dto.AddToCartRequestDto;
+import com.ecommerce.cartservice.dto.CartResponseDto;
+import com.ecommerce.cartservice.dto.ViewCartRequestDto;
+import com.ecommerce.cartservice.exceptions.ProductNotFoundException;
+import com.ecommerce.cartservice.exceptions.UserNotFoundException;
+import com.ecommerce.cartservice.models.Cart;
+import com.ecommerce.cartservice.services.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

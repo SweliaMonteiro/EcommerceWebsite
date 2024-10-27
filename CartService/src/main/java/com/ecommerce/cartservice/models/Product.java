@@ -1,4 +1,4 @@
-package com.example.cartservice.models;
+package com.ecommerce.cartservice.models;
 
 import jakarta.persistence.Entity;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.example.cartservice.exceptions;
+package com.ecommerce.cartservice.exceptions;
 
 public class ProductNotFoundException extends Exception {
     public ProductNotFoundException(String message) {
