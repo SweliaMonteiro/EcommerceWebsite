@@ -1,7 +1,7 @@
 # Notification Service
 
 ## Features
-1. Implemented the following functionalities:
+1. Implemented notification for following scenarios:
    - `User Register`: Sends a welcome email to the user after successful registration.
    - `User LogIn`: Sends a welcome back email to the user after successful login.
    - `User Profile Update`: Sends an email to the user after successful updation of the profile.

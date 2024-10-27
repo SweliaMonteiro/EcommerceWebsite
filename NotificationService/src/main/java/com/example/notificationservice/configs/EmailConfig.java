@@ -30,7 +30,7 @@ public class EmailConfig {
         emailProperties.put("mail.smtp.auth", "true");  // Enable authentication
         emailProperties.put("mail.smtp.starttls.enable", "true");  // Enable STARTTLS
 
-        // Create a Session object to authenticate the email client with the email server
+        // Create a Session object
         return Session.getInstance(emailProperties, auth);
     }
 

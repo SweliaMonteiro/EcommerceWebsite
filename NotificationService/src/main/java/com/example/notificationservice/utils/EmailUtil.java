@@ -17,16 +17,12 @@ public class EmailUtil {
     private static final Logger logger = Logger.getLogger(EmailUtil.class.getName());
 
 
+    // This method is used to send email to the specified email address of the user
     public void sendEmail(Session session, String toEmail, String subject, String body) {
         try {
             MimeMessage message = getMimeMessage(session, subject, body);
-
-            // Set email recipient TO field
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false));
-
-            // Send the email
-            Transport.send(message);
-            
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false));  // Set email recipient TO field
+            Transport.send(message);  // Send the email
             logger.info("Email sent successfully to: " + toEmail);
         }
         catch (Exception e) {
@@ -35,23 +31,17 @@ public class EmailUtil {
     }
 
 
+    // This method is used to create a MimeMessage object
     private MimeMessage getMimeMessage(Session session, String subject, String body) throws MessagingException {
         MimeMessage message = new MimeMessage(session);
-
         // Set message headers
         message.addHeader("Content-type", "text/HTML; charset=UTF-8");
         message.addHeader("format", "flowed");
         message.addHeader("Content-Transfer-Encoding", "8bit");
 
-        // Set mail subject
-        message.setSubject(subject, "UTF-8");
-
-        // Set mail body
-        message.setText(body, "UTF-8");
-
-        // Set mail sent date
-        message.setSentDate(new Date());
-
+        message.setSubject(subject, "UTF-8");  // Set mail subject
+        message.setText(body, "UTF-8");  // Set mail body
+        message.setSentDate(new Date());  // Set mail sent date
         return message;
     }
 
