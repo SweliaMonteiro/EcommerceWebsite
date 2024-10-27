@@ -4,9 +4,12 @@ import com.example.orderservice.dtos.*;
 import com.example.orderservice.exceptions.*;
 import com.example.orderservice.models.Order;
 import com.example.orderservice.services.OrderService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +21,14 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+
+    // Used to send messages to Kafka where Key is the Topic and Value is the order details which will be used by Notification service
+    @Autowired
+    private KafkaTemplate<String, String> kafkaTemplate;
+
+    // This ObjectMapper is used to convert the Order Dto object to a JSON string as Kafka only accepts strings as messages and not objects
+    @Autowired
+    private ObjectMapper objectMapper;
 
 
     // This method is used to check out the cart items, sets order and payment status to "Pending" and returns the order details to process further for payment
@@ -51,8 +62,10 @@ public class OrderController {
 
     // This method is used to update the order status or the payment status for a given order id
     @PutMapping("/update")
-    public ResponseEntity<OrderResponseDto> updateOrder(@RequestBody UpdateOrderRequestDto updateOrderRequestDto) throws OrderNotFoundException, InvalidOrderStatusException, InvalidPaymentStatusException {
+    public ResponseEntity<OrderResponseDto> updateOrder(@RequestBody UpdateOrderRequestDto updateOrderRequestDto) throws OrderNotFoundException, InvalidOrderStatusException, InvalidPaymentStatusException, JsonProcessingException {
         Order order = orderService.updateOrder(updateOrderRequestDto.getOrderId(), updateOrderRequestDto.getOrderStatus(), updateOrderRequestDto.getPaymentStatus());
+        // Send the Order object as a JSON string to the Kafka topic "NotifyUserOrderUpdate"
+        kafkaTemplate.send("NotifyUserOrderUpdate", objectMapper.writeValueAsString(order));
         return new ResponseEntity<>(OrderResponseDto.from(order), HttpStatus.OK);
     }
 
