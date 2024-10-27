@@ -16,5 +16,5 @@
    - If the Payment Status sent by the user is invalid.
 5. Added Exception Handler to handle the exceptions globally.
 6. Total amount is calculated for each order based on the number of products and their quantity in the cart.
-7. Used OrderStatus enum to represent the status of the order and PaymentStatus enum to represent the status of the payment.
+7. Used OrderStatus enum to represent the status of the order, PaymentStatus enum to represent the status of the payment and PaymentMode enum to represent the mode of payment.
 8. Used Kafka to send the order details to the Notification Service whenever order status is updated to notify the user about the order status.
