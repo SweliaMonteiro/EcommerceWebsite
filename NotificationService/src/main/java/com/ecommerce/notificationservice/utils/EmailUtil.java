@@ -1,4 +1,4 @@
-package com.example.notificationservice.utils;
+package com.ecommerce.notificationservice.utils;
 
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;

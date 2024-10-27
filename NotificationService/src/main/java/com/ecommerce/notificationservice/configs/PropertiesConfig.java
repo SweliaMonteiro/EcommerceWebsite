@@ -1,4 +1,4 @@
-package com.example.notificationservice.configs;
+package com.ecommerce.notificationservice.configs;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

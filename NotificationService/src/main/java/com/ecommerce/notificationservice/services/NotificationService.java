@@ -1,8 +1,8 @@
-package com.example.notificationservice.services;
+package com.ecommerce.notificationservice.services;
 
-import com.example.notificationservice.configs.EmailConfig;
-import com.example.notificationservice.configs.PropertiesConfig;
-import com.example.notificationservice.utils.EmailUtil;
+import com.ecommerce.notificationservice.utils.EmailUtil;
+import com.ecommerce.notificationservice.configs.EmailConfig;
+import com.ecommerce.notificationservice.configs.PropertiesConfig;
 import jakarta.mail.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

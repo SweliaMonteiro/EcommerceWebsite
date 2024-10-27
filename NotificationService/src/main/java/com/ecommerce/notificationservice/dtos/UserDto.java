@@ -1,4 +1,4 @@
-package com.example.notificationservice.dtos;
+package com.ecommerce.notificationservice.dtos;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.example.notificationservice.configs;
+package com.ecommerce.notificationservice.configs;
 
 import jakarta.mail.Authenticator;
 import jakarta.mail.PasswordAuthentication;

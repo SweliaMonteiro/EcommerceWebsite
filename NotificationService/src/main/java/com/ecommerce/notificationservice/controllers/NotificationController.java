@@ -1,9 +1,9 @@
-package com.example.notificationservice.controllers;
+package com.ecommerce.notificationservice.controllers;
 
-import com.example.notificationservice.dtos.LogInRequestDto;
-import com.example.notificationservice.dtos.OrderResponseDto;
-import com.example.notificationservice.dtos.UserDto;
-import com.example.notificationservice.services.NotificationService;
+import com.ecommerce.notificationservice.dtos.LogInRequestDto;
+import com.ecommerce.notificationservice.dtos.OrderResponseDto;
+import com.ecommerce.notificationservice.dtos.UserDto;
+import com.ecommerce.notificationservice.services.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 

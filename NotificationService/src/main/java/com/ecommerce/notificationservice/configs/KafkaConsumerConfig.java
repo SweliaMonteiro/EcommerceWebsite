@@ -1,13 +1,13 @@
-package com.example.notificationservice.configs;
+package com.ecommerce.notificationservice.configs;
 
-import com.example.notificationservice.controllers.NotificationController;
-import com.example.notificationservice.dtos.LogInRequestDto;
-import com.example.notificationservice.dtos.OrderResponseDto;
+import com.ecommerce.notificationservice.controllers.NotificationController;
+import com.ecommerce.notificationservice.dtos.LogInRequestDto;
+import com.ecommerce.notificationservice.dtos.OrderResponseDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.KafkaListener;
-import com.example.notificationservice.dtos.UserDto;
+import com.ecommerce.notificationservice.dtos.UserDto;
 
 
 @Configuration
