@@ -65,7 +65,7 @@ public class OrderController {
     public ResponseEntity<OrderResponseDto> updateOrder(@RequestBody UpdateOrderRequestDto updateOrderRequestDto) throws OrderNotFoundException, InvalidOrderStatusException, InvalidPaymentStatusException, JsonProcessingException {
         Order order = orderService.updateOrder(updateOrderRequestDto.getOrderId(), updateOrderRequestDto.getOrderStatus(), updateOrderRequestDto.getPaymentStatus());
         // Send the Order object as a JSON string to the Kafka topic "NotifyUserOrderUpdate"
-        kafkaTemplate.send("NotifyUserOrderUpdate", objectMapper.writeValueAsString(order));
+        kafkaTemplate.send("NotifyUserOrderUpdate", objectMapper.writeValueAsString(OrderResponseDto.from(order)));
         return new ResponseEntity<>(OrderResponseDto.from(order), HttpStatus.OK);
     }
 
