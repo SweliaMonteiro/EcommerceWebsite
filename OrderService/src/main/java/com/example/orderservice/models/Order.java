@@ -25,7 +25,8 @@ public class Order extends BaseModel {
     @Enumerated(EnumType.ORDINAL)
     private OrderStatus orderStatus;
 
-    private String paymentMode;
+    @Enumerated(EnumType.ORDINAL)
+    private PaymentMode paymentMode;
 
     @Enumerated(EnumType.ORDINAL)
     private PaymentStatus paymentStatus;

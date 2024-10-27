@@ -23,7 +23,7 @@ public class OrderService {
     private UserRepository userRepository;
 
 
-    public Order checkout(Long userId, List<Long> cartItemIds, String deliveryAddress, String paymentMode) throws UserNotFoundException, CartItemNotFoundException {
+    public Order checkout(Long userId, List<Long> cartItemIds, String deliveryAddress, String paymentMode) throws UserNotFoundException, CartItemNotFoundException, InvalidPaymentModeException {
         // Check if the user exists in the database, if not throw UserNotFoundException
         Optional<User> userOptional = userRepository.findById(userId);
         if (userOptional.isEmpty()) {
@@ -45,6 +45,15 @@ public class OrderService {
             Product product = cartItem.getProduct();
             totalAmount += product.getPrice() * cartItem.getQuantity();
         }
+        // Check if payment mode is valid, if not throw InvalidPaymentModeException
+        if (paymentMode!=null && !paymentMode.isEmpty()) {
+            try {
+                PaymentMode.valueOf(paymentMode);
+            }
+            catch (IllegalArgumentException e) {
+                throw new InvalidPaymentModeException("Invalid Payment Mode: " + paymentMode);
+            }
+        }
 
         // Create a new order object and save to database, set the order status and payment status to "Pending" as the order is not yet processed
         Order order = new Order();
@@ -53,7 +62,7 @@ public class OrderService {
         order.setTotalAmount(totalAmount);
         order.setDeliveryAddress(deliveryAddress);
         order.setOrderStatus(OrderStatus.PENDING);
-        order.setPaymentMode(paymentMode);
+        order.setPaymentMode(PaymentMode.valueOf(paymentMode));
         order.setPaymentStatus(PaymentStatus.PENDING);
         return orderRepository.save(order);
     }
@@ -91,7 +100,7 @@ public class OrderService {
         Order order = orderOptional.get();
 
         // Check if order status is valid, if not throw InvalidOrderStatusException
-        if (orderStatus != null && !orderStatus.isEmpty()) {
+        if (orderStatus!=null && !orderStatus.isEmpty()) {
             try {
                 order.setOrderStatus(OrderStatus.valueOf(orderStatus));
             }
@@ -100,7 +109,7 @@ public class OrderService {
             }
         }
         // Check if payment status is valid, if not throw InvalidPaymentStatusException
-        if (paymentStatus != null && !paymentStatus.isEmpty()) {
+        if (paymentStatus!=null && !paymentStatus.isEmpty()) {
             try {
                 order.setPaymentStatus(PaymentStatus.valueOf(paymentStatus));
             }

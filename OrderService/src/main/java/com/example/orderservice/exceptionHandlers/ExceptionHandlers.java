@@ -58,6 +58,15 @@ public class ExceptionHandlers {
     }
 
 
+    // This method handles InvalidPaymentModeException and sends a response with the exception message and status code 400
+    @ExceptionHandler(InvalidPaymentModeException.class)
+    public ResponseEntity<ExceptionDto> handleInvalidPaymentModeException(InvalidPaymentModeException ex) {
+        ExceptionDto exceptionDto = new ExceptionDto();
+        exceptionDto.setMessage(ex.getMessage());
+        return new ResponseEntity<>(exceptionDto, HttpStatus.BAD_REQUEST);
+    }
+
+
     // This method handles all other exceptions and sends a response with the exception message and status code 500
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ExceptionDto> handleAllExceptions(Exception ex) {

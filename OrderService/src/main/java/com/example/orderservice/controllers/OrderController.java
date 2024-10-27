@@ -33,7 +33,7 @@ public class OrderController {
 
     // This method is used to check out the cart items, sets order and payment status to "Pending" and returns the order details to process further for payment
     @PostMapping("/checkout")
-    public ResponseEntity<OrderResponseDto> checkout(@RequestBody CheckoutRequestDto checkoutRequestDto) throws UserNotFoundException, CartItemNotFoundException {
+    public ResponseEntity<OrderResponseDto> checkout(@RequestBody CheckoutRequestDto checkoutRequestDto) throws UserNotFoundException, CartItemNotFoundException, InvalidPaymentModeException {
         Order order = orderService.checkout(checkoutRequestDto.getUserId(), checkoutRequestDto.getCartItemIds(),
                                             checkoutRequestDto.getDeliveryAddress(), checkoutRequestDto.getPaymentMode());
         return new ResponseEntity<>(OrderResponseDto.from(order), HttpStatus.OK);
