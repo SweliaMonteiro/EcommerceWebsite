@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RazorpayConfig {
 
-    // @Value annotation is used to inject values from application.properties file
     @Value("${razorpay.key.id}")
     private String razorpayKeyId;
 
@@ -18,7 +17,6 @@ public class RazorpayConfig {
     private String razorpayKeySecret;
 
 
-    // Creating a bean of RazorpayClient to restrict creating multiple instances of the RazorpayClient class
     @Bean
     public RazorpayClient razorpayClient() throws RazorpayException {
         return new RazorpayClient(razorpayKeyId, razorpayKeySecret);

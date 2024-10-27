@@ -1,4 +1,4 @@
-package com.example.orderservice.models;
+package com.example.paymentservice.models;
 
 
 public enum PaymentMode {
