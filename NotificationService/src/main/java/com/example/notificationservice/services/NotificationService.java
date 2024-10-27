@@ -58,13 +58,13 @@ public class NotificationService {
     }
 
 
-    public void sendEmailNotifyUserOrderUpdate(String userEmail, String orderStatus) {
+    public void sendEmailNotifyUserOrderUpdate(String userEmail, String orderStatus, String paymentStatus) {
         // Get the email session
         Session session = emailConfig.getEmailSession();
         // Get the properties file and get the subject and body of the email
         Properties propertiesFile = propertiesConfig.getPropertiesFile();
         String subject = propertiesFile.getProperty("user.order.update.mail.subject");
-        String body = propertiesFile.getProperty("user.order.update.mail.body").replaceAll("<status>", orderStatus);
+        String body = propertiesFile.getProperty("user.order.update.mail.body").replaceAll("<order_status>", orderStatus).replaceAll("<paymentStatus>", paymentStatus);
         // Send the email to the user using the emailUtil for order update
         emailUtil.sendEmail(session, userEmail, subject, body);
     }

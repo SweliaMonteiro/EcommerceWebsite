@@ -35,7 +35,7 @@ public class NotificationController {
 
     // This method sends an email notification to the user when their order is updated
     public void sendEmailNotifyUserOrderUpdate(OrderResponseDto orderResponseDto) {
-        notificationService.sendEmailNotifyUserOrderUpdate(orderResponseDto.getUserEmail(), orderResponseDto.getOrderStatus());
+        notificationService.sendEmailNotifyUserOrderUpdate(orderResponseDto.getUserEmail(), orderResponseDto.getOrderStatus(), orderResponseDto.getPaymentStatus());
     }
 
 }
